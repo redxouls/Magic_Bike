@@ -6,9 +6,9 @@ const errorHandling = (error) => {
 };
 
 export const PositionAPI = {
-  getCurentPosition: () =>
+  getCurrentPosition: () =>
     axios.get(`/api/current/location`).catch((error) => errorHandling(error)),
-  getCurentBearing: () =>
+  getCurrentBearing: () =>
     axios.get(`/api/current/bearing`).catch((error) => errorHandling(error)),
   postNavigation: (data) =>
     axios

@@ -33,7 +33,7 @@ export default class CompassControl {
 
   follow() {
     this.intervalID = setInterval(() => {
-      this._options.updateCurentMarkerBearing();
+      this._options.updateCurrentMarkerBearing();
     }, 100);
   }
 

@@ -36,3 +36,11 @@
   background-repeat: no-repeat;
   background-size: 22px 22px;
 }
+
+.mapboxgl-ctrl-streaming {
+    /* position: absolute; */
+    bottom: 0%;
+    z-index: -1;
+    max-height: 50%;
+    max-width: 100%;
+}

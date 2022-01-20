@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
 import {ReactFlvPlayer} from 'react-flv-player'
 
-class Index extends Component {
+class Player extends Component {
 
   render() {
     return (
-      <div>
+      <div className="mapboxgl-ctrl-streaming" id="streaming">
         <ReactFlvPlayer
           url = "./test.flv"
           heigh = "800px"
@@ -16,4 +16,4 @@ class Index extends Component {
     );
   }
 }
-export default Index;
+export default Player;

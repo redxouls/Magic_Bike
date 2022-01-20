@@ -57,7 +57,7 @@ class Map {
 
     this.map.addControl(
       new CompassControl({
-        updateCurentMarkerBearing: this.updateCurentMarkerBearing.bind(this),
+        updateCurrentMarkerBearing: this.updateCurrentMarkerBearing.bind(this),
       }),
       "top-right"
     );
@@ -97,9 +97,8 @@ class Map {
         });
     });
 
-    this.map.addControl(new CameraControl({
-
-    }));
+    this.map.addControl(new CameraControl());
+    
 
     this.directions.on("destination", (e) => {
       console.log(e.feature.geometry.coordinates);
@@ -118,14 +117,14 @@ class Map {
         });
     });
 
-    // this.updateCurentMarkerPostion();
-    // this.updateCurentMarkerBearing()
+    // this.updateCurrentMarkerPostion();
+    // this.updateCurrentMarkerBearing()
     // this.updateMapBearing();
 
     // Add markers to the map.
   }
 
-  updateCurentMarkerPosition() {
+  updateCurrentMarkerPosition() {
     console.log("update my position");
     const { currentMarker } = this;
     setInterval(
@@ -143,8 +142,8 @@ class Map {
     );
   }
 
-  updateCurentMarkerBearing() {
-    PositionAPI.getCurentBearing().then((response) => {
+  updateCurrentMarkerBearing() {
+    PositionAPI.getCurrentBearing().then((response) => {
       console.log(response);
       if (response) {
         const { bearing } = response.data;
@@ -154,7 +153,7 @@ class Map {
   }
 
   updateMapBearing() {
-    PositionAPI.getCurentBearing().then((response) => {
+    PositionAPI.getCurrentBearing().then((response) => {
       if (response) {
         const { bearing } = response.data;
         this.map.easeTo({ pitch: 0, bearing });
@@ -163,7 +162,7 @@ class Map {
   }
 
   updateStartPoint() {
-    PositionAPI.getCurentPosition().then(
+    PositionAPI.getCurrentPosition().then(
       function (response) {
         if (response) {
           const { coordinates } = response.data;
@@ -174,7 +173,7 @@ class Map {
   }
 
   updateBearing() {
-    PositionAPI.getCurentBearing().then(
+    PositionAPI.getCurrentBearing().then(
       function (response) {
         if (response) {
           const { bearing } = response.data;
