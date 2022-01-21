@@ -18,7 +18,7 @@ const App = () => {
       
   //   </div>
   // )
-  return <div><Player /><div ref={mapRef} className="mapWrapper"></div></div>;
+  return <div ref={mapRef} className="mapWrapper"></div>;
 };
 
 export default App;

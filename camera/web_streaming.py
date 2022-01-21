@@ -7,18 +7,18 @@ def gstreamer_rtmpstream(queue):
     now = datetime.now()
     filename = now.strftime("%d-%m-%Y_%H-%M-%S") + ".flv"
       
-    pipeline = (
-        "appsrc ! "
-            "video/x-raw, format=(string)BGR ! "
-        "queue ! "
-            "videoconvert ! "
-                "video/x-raw, format=RGBA ! "
-            "nvvidconv ! "
-            "nvv4l2h264enc ! "
-            "h264parse ! "
-            "flvmux ! "
-            'rtmpsink location="rtmp://localhost/rtmp/live live=1"'
-        )
+    # pipeline = (
+    #     "appsrc ! "
+    #         "video/x-raw, format=(string)BGR ! "
+    #     "queue ! "
+    #         "videoconvert ! "
+    #             "video/x-raw, format=RGBA ! "
+    #         "nvvidconv ! "
+    #         "nvv4l2h264enc ! "
+    #         "h264parse ! "
+    #         "flvmux ! "
+    #         'rtmpsink location="rtmp://localhost/rtmp/live live=1"'
+    #     )
     file_pipeline = (
         "appsrc ! "
             "video/x-raw, format=(string)BGR ! "
@@ -32,7 +32,7 @@ def gstreamer_rtmpstream(queue):
             "filesink location=%s" % filename
         )
     
-    pipeline_writer = cv2.VideoWriter(pipeline, cv2.CAP_GSTREAMER, 0, 30.0, (1920, 1080))
+    # pipeline_writer = cv2.VideoWriter(pipeline, cv2.CAP_GSTREAMER, 0, 30.0, (1920, 1080))
     # pipeline_writer = cv2.VideoWriter(pipeline, cv2.CAP_GSTREAMER, 0, 30.0, (1920, 1080))
     file_writer = cv2.VideoWriter(file_pipeline, cv2.CAP_GSTREAMER, 0, 30.0, (1920, 1080))
 
@@ -40,7 +40,7 @@ def gstreamer_rtmpstream(queue):
         frame = queue.get()
         if frame is None:
             break
-        pipeline_writer.write(frame)
+        # pipeline_writer.write(frame)
         file_writer.write(frame)
         print("[RTMP] WRITE")
 

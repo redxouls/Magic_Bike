@@ -7,7 +7,7 @@ class Player extends Component {
     return (
       <div className="mapboxgl-ctrl-streaming" id="streaming">
         <ReactFlvPlayer
-          url = "./test.flv"
+          url = "/test.flv"
           heigh = "800px"
           width = "800px"
           isMuted={true}

@@ -3,11 +3,13 @@ from flask import Flask, render_template, request, jsonify, send_from_directory
 
 from sensors.Subscriber import Subscriber
 from controller.Navigator import Navigator
+from camera.web_streaming import Camera
 
 app = Flask(__name__, static_folder="build", template_folder="build")
 
 subscriber = Subscriber()
 navigator =  Navigator(subscriber=subscriber)
+camera = Camera()
 
 t = threading.Thread(target=subscriber.main)
 t.start()
@@ -54,10 +56,12 @@ def current(mode):
 
 @app.route("/api/records/<mode>", methods=['GET'])
 def record_get(mode):
-    if mode == "0":
-        # data = {"status": 200}
-        # return send_from_directory('./camera/test.flv')
-        return send_from_directory('./camera', 'test.html')
+    global camera
+    if mode == "start":
+        camera.start_streaming()
+    elif mode == "stop":
+        camera.stop_streaming()
+    return jsonify({"status": 200})
 
 # Serve React App
 @app.route('/', defaults={'path': ''})

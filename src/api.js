@@ -22,4 +22,8 @@ export const PositionAPI = {
     axios.get(`/api/navigate/start`).catch((error) => errorHandling(error)),
   stopNavigation: () =>
     axios.get(`/api/navigate/stop`).catch((error) => errorHandling(error)),
+  startRecording: () =>
+    axios.get(`/api/records/start`).catch((error) => errorHandling(error)),
+  stopRecording: () =>
+    axios.get(`/api/records/stop`).catch((error) => errorHandling(error)),
 };

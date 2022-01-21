@@ -186,10 +186,12 @@ class Map {
 
   startNavigation() {
     PositionAPI.startNavigation();
+    PositionAPI.startRecording();
   }
 
   stopNavigation() {
     PositionAPI.stopNavigation();
+    PositionAPI.stopRecording();
   }
 }
 
